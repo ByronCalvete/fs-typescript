@@ -1,11 +1,36 @@
+import { isNotNumber } from "./utils";
+
 interface resultValues {
-  periodLength: number,
-  trainingDays: number,
-  success: boolean,
-  rating: number,
-  ratingDescription: string,
-  target: number,
-  average: number
+  periodLength: number;
+  trainingDays: number;
+  success: boolean;
+  rating: number;
+  ratingDescription: string;
+  target: number;
+  average: number;
+}
+
+interface CorrectValues {
+  values: number[];
+}
+
+const parseArguments = (args: string[]): CorrectValues => {
+  if (args.length < 4) throw new Error('not enough arguments');
+
+  const myArgs: number[] = [];
+  const mySliced = args.slice(2)
+
+  for (let i = 0; i < mySliced.length; i++) {
+    if(!isNotNumber(mySliced[i])) {
+      myArgs.push(Number(mySliced[i]))
+    } else {
+      throw new Error('Provided values were not numbers!')
+    }
+  }
+
+  return {
+    values: myArgs
+  }
 }
 
 const calculateExercises = (dailyHours: number[], targetHours: number): resultValues => {
@@ -21,10 +46,21 @@ const calculateExercises = (dailyHours: number[], targetHours: number): resultVa
     trainingDays: trainingDays.length,
     success: average > targetHours,
     rating: rating,
-    ratingDescription: rating > targetHours ? 'Yeah you are the best' : 'Please, you can do better',
+    ratingDescription: rating >= targetHours ? 'Yeah you are the best' : 'Please, you can do better',
     target: targetHours,
     average: average
   }
 }
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2))
+try {
+  const { values } = parseArguments(process.argv);
+  const dailyHours: number[] = values.slice(1)
+  const targetHours: number = values[0]
+  console.log(calculateExercises(dailyHours, targetHours))
+} catch (error: unknown) {
+  let errorMessage = 'Something bad happened.';
+  if (error instanceof Error) {
+    errorMessage += ' Error: ' + error.message;
+  }
+  console.log(errorMessage)
+}
