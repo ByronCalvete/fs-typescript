@@ -5,7 +5,7 @@ interface CorrectValues {
   weight: number;
 }
 
-const parseArguments = (args: string[]): CorrectValues => {
+export const parseArguments = (args: string[]): CorrectValues => {
   if (args.length < 4) throw new Error('Not enough arguments');
   if (args.length > 4) throw new Error('Too many arguments');
 
@@ -19,15 +19,15 @@ const parseArguments = (args: string[]): CorrectValues => {
   }
 }
 
-const calculateBmi = (height: number, weight: number): string => {
+export const calculateBmi = (height: number, weight: number): string => {
   const bmi = (weight) / ((height/100) ** 2)
-  console.log(`The BMI are ${bmi}`)
+  // console.log(`The BMI are ${bmi}`)
 
   if (bmi < 25) {
     return 'Normal range'
-  } else if (bmi < 30) {
+  } else if (bmi > 25 && bmi < 30) {
     return 'Overweight range'
-  } else if (bmi >= 30) {
+  } else {
     return 'Obese range'
   }
 }
