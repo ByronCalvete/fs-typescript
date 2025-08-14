@@ -18,20 +18,20 @@ const parseArguments = (args: string[]): CorrectValues => {
   if (args.length < 4) throw new Error('not enough arguments');
 
   const myArgs: number[] = [];
-  const mySliced = args.slice(2)
+  const mySliced = args.slice(2);
 
   for (let i = 0; i < mySliced.length; i++) {
     if(!isNotNumber(mySliced[i])) {
-      myArgs.push(Number(mySliced[i]))
+      myArgs.push(Number(mySliced[i]));
     } else {
-      throw new Error('Provided values were not numbers!')
+      throw new Error('Provided values were not numbers!');
     }
   }
 
   return {
     values: myArgs
-  }
-}
+  };
+};
 
 const calculateExercises = (dailyHours: number[], targetHours: number): resultValues => {
   const numberOfDays = dailyHours.length;
@@ -49,18 +49,18 @@ const calculateExercises = (dailyHours: number[], targetHours: number): resultVa
     ratingDescription: rating >= targetHours ? 'Yeah you are the best' : 'Please, you can do better',
     target: targetHours,
     average: average
-  }
-}
+  };
+};
 
 try {
   const { values } = parseArguments(process.argv);
-  const dailyHours: number[] = values.slice(1)
-  const targetHours: number = values[0]
-  console.log(calculateExercises(dailyHours, targetHours))
+  const dailyHours: number[] = values.slice(1);
+  const targetHours: number = values[0];
+  console.log(calculateExercises(dailyHours, targetHours));
 } catch (error: unknown) {
   let errorMessage = 'Something bad happened.';
   if (error instanceof Error) {
     errorMessage += ' Error: ' + error.message;
   }
-  console.log(errorMessage)
+  console.log(errorMessage);
 }

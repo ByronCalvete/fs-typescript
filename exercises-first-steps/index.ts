@@ -9,24 +9,24 @@ app.get('/hello', (_req, res) => {
 });
 
 app.get('/bmi', (req, res) => {
-  const { weight, height } = req.query
+  const { weight, height } = req.query;
 
-  const validParameters: boolean = !isNotNumber(weight) && !isNotNumber(height)
+  const validParameters: boolean = !isNotNumber(weight) && !isNotNumber(height);
 
   if (!weight || !height || !validParameters) {
-    res.status(400).send({ error: 'malformatted parameters' })
+    res.status(400).send({ error: 'malformatted parameters' });
   }
 
-  const bmi = calculateBmi(Number(height), Number(weight))
+  const bmi = calculateBmi(Number(height), Number(weight));
 
   const bmiData = {
     weight,
     height,
     bmi
-  }
+  };
 
-  res.status(200).json(bmiData)
-})
+  res.status(200).json(bmiData);
+});
 
 const PORT = 3003;
 

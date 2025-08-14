@@ -13,32 +13,32 @@ export const parseArguments = (args: string[]): CorrectValues => {
     return {
       height: Number(args[2]),
       weight: Number(args[3])
-    }
+    };
   } else {
-    throw new Error('Provided values were not numbers!')
+    throw new Error('Provided values were not numbers!');
   }
-}
+};
 
 export const calculateBmi = (height: number, weight: number): string => {
-  const bmi = (weight) / ((height/100) ** 2)
+  const bmi = (weight) / ((height/100) ** 2);
   // console.log(`The BMI are ${bmi}`)
 
   if (bmi < 25) {
-    return 'Normal range'
+    return 'Normal range';
   } else if (bmi > 25 && bmi < 30) {
-    return 'Overweight range'
+    return 'Overweight range';
   } else {
-    return 'Obese range'
+    return 'Obese range';
   }
-}
+};
 
 try {
   const { height, weight } = parseArguments(process.argv);
-  console.log(calculateBmi(height, weight))
+  console.log(calculateBmi(height, weight));
 } catch (error: unknown) {
   let errorMessage = 'Something bad happened.';
   if (error instanceof Error) {
     errorMessage += ' Error: ' + error.message;
   }
-  console.log(errorMessage)
+  console.log(errorMessage);
 }
