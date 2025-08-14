@@ -33,7 +33,7 @@ const parseArguments = (args: string[]): CorrectValues => {
   };
 };
 
-const calculateExercises = (dailyHours: number[], targetHours: number): resultValues => {
+export const calculateExercises = (dailyHours: number[], targetHours: number): resultValues => {
   const numberOfDays = dailyHours.length;
   const totalHours = dailyHours.reduce((accu, num) => accu + num, 0);
   const trainingDays = dailyHours.filter(day => day !== 0);
