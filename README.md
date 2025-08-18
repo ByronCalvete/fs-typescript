@@ -10,4 +10,5 @@
 ## Resources
 - [TypeScript's official playground](https://www.typescriptlang.org/play/)
 - [TypeScript's official docs](https://www.typescriptlang.org/docs/)
+- [TSConfig Reference](https://www.typescriptlang.org/tsconfig/)
   
