@@ -11,4 +11,5 @@
 - [TypeScript's official playground](https://www.typescriptlang.org/play/)
 - [TypeScript's official docs](https://www.typescriptlang.org/docs/)
 - [TSConfig Reference](https://www.typescriptlang.org/tsconfig/)
+- [TypeScript's official Utiliy Types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
   
