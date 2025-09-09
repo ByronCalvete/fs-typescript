@@ -7,19 +7,32 @@ const App = () => {
   const courseParts = [
     {
       name: 'Fundamentals',
-      exercisesCount: 10
+      exerciseCount: 10,
+      description: 'This is an awesome course part',
+      kind: 'basic'
     },
     {
       name: 'Using props to pass data',
-      exercisesCount: 7
+      exerciseCount: 7,
+      groupProjectCount: 3,
+      kind: 'group'
+    },
+    {
+      name: 'Basics of type Narrowing',
+      exerciseCount: 7,
+      description: 'how to go from unknwon to string',
+      kind: 'basic'
     },
     {
       name: 'Deeper type usage',
-      exercisesCount: 14
+      exerciseCount: 14,
+      description: 'Confusing description',
+      backgroundMaterial: 'https://type-level-typescript.com/template-literal-types',
+      kind: 'background'
     }
   ];
 
-  const totalExercises = courseParts.reduce((sum, part) => sum + part.exercisesCount, 0);
+  const totalExercises = courseParts.reduce((sum, part) => sum + part.exerciseCount, 0);
 
   return (
     <div>

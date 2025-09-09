@@ -1,7 +1,11 @@
-import type { Part } from "../types";
+import type { CoursePart } from "../types";
 
 interface ContentProps {
-  courseParts: Part[]
+  courseParts: CoursePart[]
+}
+
+const assertNever = (value: never): never => {
+  throw new Error(`Unhandled discriminated union member: ${JSON.stringify(value)}`)
 }
 
 const Content = (props: ContentProps) => {
@@ -9,9 +13,24 @@ const Content = (props: ContentProps) => {
   
   return (
     <>
-      {courseParts.map(coursePart => (
-        <p key={coursePart.name}>{coursePart.name}: {coursePart.exercisesCount}</p>
-      ))}
+      {/* {courseParts.map(part => (
+        <p key={part.name}>{part.name}: {part.exerciseCount}</p>
+      ))} */}
+      {courseParts.forEach(part => {
+        switch (part.kind) {
+          case 'basic':
+            console.log(part.name, part.description, part.exerciseCount);
+            break;
+          case 'group':
+            console.log(part.name, part.exerciseCount, part.groupProjectCount);
+            break;
+          case 'background':
+            console.log(part.name, part.exerciseCount, part.description, part.backgroundMaterial);
+            break;
+          default:
+            return assertNever(part);
+        }
+      })}
     </>
   )
 }
