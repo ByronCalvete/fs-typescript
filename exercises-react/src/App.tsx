@@ -1,10 +1,11 @@
 import Header from './components/Header';
 import Content from './components/Content';
 import Total from './components/Total';
+import type { CoursePart } from './types';
 
 const App = () => {
   const courseName = 'Half Stack application development';
-  const courseParts = [
+  const courseParts: CoursePart[] = [
     {
       name: 'Fundamentals',
       exerciseCount: 10,
@@ -20,7 +21,7 @@ const App = () => {
     {
       name: 'Basics of type Narrowing',
       exerciseCount: 7,
-      description: 'how to go from unknwon to string',
+      description: 'How to go from unknwon to string',
       kind: 'basic'
     },
     {
@@ -29,6 +30,19 @@ const App = () => {
       description: 'Confusing description',
       backgroundMaterial: 'https://type-level-typescript.com/template-literal-types',
       kind: 'background'
+    },
+    {
+      name: 'TypeScript in frontend',
+      exerciseCount: 10,
+      description: 'a hard part',
+      kind: 'basic'
+    },
+    {
+      name: 'Backend development',
+      exerciseCount: 21,
+      description: 'Typing the backend',
+      requirements: ['nodejs', 'jest'],
+      kind: 'special'
     }
   ];
 
